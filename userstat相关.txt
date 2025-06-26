@@ -1,0 +1,38 @@
+// --- 新增：为图表定义的数据点模型 ---
+
+// 用于描述“完成率趋势折线图”的单个数据点
+// period可以是 "W22" (第22周) 或 "Jun" (六月)
+// rate是完成率，例如 0.85 表示 85%
+data class CompletionRateDataPoint(
+    val period: String,
+    val rate: Float
+)
+
+// --- 新增：用于时间分配报告的单个数据点 ---
+data class TimeAllocationDataPoint(
+    val category: String, // e.g., "学习", "会议"
+    val percentage: Float // e.g., 0.35 for 35%
+)
+
+// 用于描述“任务状态统计”的数据
+data class TaskStatusSummary(
+    val todo: Int,
+    val inProgress: Int,
+    val completed: Int
+)
+
+// 用户统计数据响应
+data class UserStatsResponse(
+    val completedTasks: Int,
+    val inProgressTasks: Int,
+    val totalTeams: Int,
+    val totalFocusTime: Long, // Total focus time in seconds
+
+    // 新增的图表专用数据
+    val completionRateTrend: List<CompletionRateDataPoint>, // 用于完成率趋势折线图
+    val recentTaskSummary: TaskStatusSummary,              // 用于任务状态分布饼图/柱状图
+    val timeAllocationReport: List<TimeAllocationDataPoint>, // 时间分配报告
+    val suggestions: List<String> // 优化建议列表
+    // --- 新增字段结束 ---
+
+)
