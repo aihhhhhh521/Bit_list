@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "format": "uuid", "description": "任务唯一标识符" },
+    "title": { "type": "string", "description": "任务标题" },
+    "description": { "type": "string", "description": "任务详细描述" },
+    "priority": { "type": "string", "enum": ["LOW", "MEDIUM", "HIGH"], "description": "任务优先级" },
+    "tags": { "type": "array", "items": { "type": "string" }, "description": "任务标签列表" },
+    "status": { "type": "string", "enum": ["TODO", "IN_PROGRESS", "DONE"], "description": "任务状态" },
+    "dueDate": { "type": "string", "format": "date", "description": "任务截止日期，格式为 YYYY-MM-DD" },
+    "order": { "type": "integer", "description": "任务在列表中的顺序" },
+    "isDeleted": { "type": "boolean", "description": "任务是否标记为已删除", "default": false },
+    "attachments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "description": "附件唯一标识符" },
+          "fileName": { "type": "string", "description": "附件文件名" },
+          "sizeInBytes": { "type": "integer", "description": "附件大小（字节）" },
+          "isDeleted": { "type": "boolean", "description": "附件是否标记为已删除", "default": false },
+          "attachmentLink": { "type": ["string", "null"], "format": "uri", "description": "附件下载链接" }
+        },
+        "required": ["id", "fileName", "sizeInBytes"]
+      },
+      "description": "任务附件列表",
+      "default": []
+    },
+    "assignedTo": { "type": ["string", "null"], "format": "uuid", "description": "分配给任务的用户 ID" },
+    "isTeamTask": { "type": "boolean", "description": "是否为团队任务", "default": false },
+    "teamId": { "type": ["string", "null"], "format": "uuid", "description": "关联的团队 ID" },
+    "parentTaskId": { "type": ["string", "null"], "format": "uuid", "description": "父任务的 ID" },
+    "weight": { "type": "integer", "description": "任务权重", "default": 1 }
+  },
+  "required": ["id", "title", "description", "priority", "tags", "status", "dueDate", "order", "isTeamTask", "weight"],
+  "description": "任务数据模型"
+}

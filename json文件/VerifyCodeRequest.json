@@ -1,0 +1,9 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "email": { "type": "string", "format": "email", "description": "用户邮箱地址" }
+  },
+  "required": ["email"],
+  "description": "验证码验证请求"
+}

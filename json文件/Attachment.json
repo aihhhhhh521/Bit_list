@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "format": "uuid", "description": "附件唯一标识符" },
+    "fileName": { "type": "string", "description": "附件文件名" },
+    "sizeInBytes": { "type": "integer", "description": "附件大小（字节）" },
+    "isDeleted": { "type": "boolean", "description": "附件是否标记为已删除", "default": false },
+    "attachmentLink": { "type": ["string", "null"], "format": "uri", "description": "附件下载链接" }
+  },
+  "required": ["id", "fileName", "sizeInBytes"],
+  "description": "附件数据模型"
+}

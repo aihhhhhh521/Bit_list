@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "userId": { "type": "string", "description": "用户的唯一标识符" },
+    "durationInSeconds": { "type": "integer", "description": "专注时长，以秒为单位" },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "时间戳，ISO 8601 格式，例如 '2025-06-05T12:00:00Z'"
+    }
+  },
+  "required": ["userId", "durationInSeconds", "timestamp"],
+  "description": "番茄专注数据"
+}

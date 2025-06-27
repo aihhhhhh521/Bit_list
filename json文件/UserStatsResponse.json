@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "completedTasks": { "type": "integer", "description": "已完成任务数量" },
+    "inProgressTasks": { "type": "integer", "description": "进行中任务数量" },
+    "totalTeams": { "type": "integer", "description": "参与的团队数量" }
+  },
+  "required": ["completedTasks", "inProgressTasks", "totalTeams"],
+  "description": "用户统计数据响应"
+}

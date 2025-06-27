@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "description": "用户唯一标识符" },
+    "name": { "type": "string", "description": "用户姓名" },
+    "email": { "type": "string", "format": "email", "description": "用户邮箱地址" },
+    "grade": { "type": "string", "description": "用户年级" },
+    "birth": { "type": "string", "format": "date", "description": "用户出生日期" },
+    "stuId": { "type": "string", "description": "学生ID" },
+    "avatarUri": { "type": ["string", "null"], "format": "uri", "description": "用户头像的 URL" }
+  },
+  "required": ["id", "name", "email", "grade", "birth", "stuId"],
+  "description": "用户数据模型"
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "format": "uuid", "description": "团队唯一标识符" },
+    "name": { "type": "string", "description": "团队名称" },
+    "description": { "type": "string", "description": "团队描述" },
+    "members": {
+      "type": "object",
+      "additionalProperties": { "type": "string", "enum": ["ADMIN", "MEMBER"], "description": "用户在团队中的角色" },
+      "description": "团队成员的 ID 到角色的映射"
+    },
+    "tasks": { "type": "array", "items": { "type": "string", "format": "uuid" }, "description": "分配给团队的任务 ID 列表" },
+    "pendingJoinRequests": { "type": "array", "items": { "type": "string", "format": "uuid" }, "description": "待审批的加入请求用户 ID 列表", "default": [] }
+  },
+  "required": ["id", "name", "description", "members", "tasks", "pendingJoinRequests"],
+  "description": "团队数据模型"
+}
